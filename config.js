@@ -5,5 +5,10 @@ module.exports = {
     },
     // Configurable subscriber paths
     paths: process.env.PATHS.split(',') || ['/test1', '/test2']
+  },
+  publisher: {
+    app: {
+      port: process.env.PUBLISHER_SERVER_PORT || 8000
+    }
   }
 }
