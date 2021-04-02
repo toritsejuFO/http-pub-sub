@@ -20,7 +20,7 @@ server.use((req, _, next) => {
 server.use((error, _, res, __) => {
   const statusCode = error.code || httpCodes.INTERNAL_SERVER_ERROR
   const message = error.message || 'Internal Server Error'
-  res.status(statusCode).json({ statusCode, message })
+  return res.status(statusCode).json({ statusCode, message })
 })
 
 server.listen(config.app.port, () => {
