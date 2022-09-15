@@ -8,5 +8,7 @@ module.exports.printData = (req, res) => {
   console.log('Data:', data, '\n')
 
   const statusCode = httpCodes.OK
-  return res.status(statusCode).json({ statusCode, message: 'Message received' })
+  return res
+    .status(statusCode)
+    .json({ statusCode, message: 'Message received' })
 }

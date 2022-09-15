@@ -1,5 +1,5 @@
 const service = require('./service')
-const httpCodes = require('../httpCodes')
+const { OK, INTERNAL_SERVER_ERROR } = require('../httpCodes')
 
 module.exports.subscribe = (req, res) => {
   const { topic } = req.params
@@ -16,6 +16,8 @@ module.exports.publish = async (req, res) => {
   const success = await service.publish(topic, body)
 
   return success
-    ? res.status(httpCodes.OK).json({ statusCode: httpCodes.OK })
-    : res.status(httpCodes.INTERNAL_SERVER_ERROR).json({ statusCode: httpCodes.INTERNAL_SERVER_ERROR })
+    ? res.status(OK).json({ statusCode: OK })
+    : res
+        .status(INTERNAL_SERVER_ERROR)
+        .json({ statusCode: INTERNAL_SERVER_ERROR })
 }
