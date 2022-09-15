@@ -28,7 +28,7 @@ module.exports.validatePublishRequest = async (req, res, next) => {
 
   if (!body || typeof body !== 'object' || JSON.stringify(body) === '{}') {
     return res.status(statusCode).json({
-      statusCode: statusCode,
+      statusCode,
       message: 'Cannot publish invalid data'
     })
   }
